@@ -7,6 +7,7 @@ require "activerecord_slotted_counters/adapters/rails_upsert"
 require "activerecord_slotted_counters/adapters/pg_upsert"
 require "activerecord_slotted_counters/adapters/sqlite_upsert"
 require "activerecord_slotted_counters/adapters/mysql_upsert"
+require "activerecord_slotted_counters/adapters/trilogy_upsert"
 
 module ActiveRecordSlottedCounters
   class SlottedCounter < ::ActiveRecord::Base
@@ -44,6 +45,7 @@ module ActiveRecordSlottedCounters
 
       def set_slotted_counter_db_adapter
         available_adapters = [
+          ActiveRecordSlottedCounters::Adapters::TrilogyUpsert,
           ActiveRecordSlottedCounters::Adapters::MysqlUpsert,
           ActiveRecordSlottedCounters::Adapters::SqliteUpsert,
           ActiveRecordSlottedCounters::Adapters::PgUpsert,
